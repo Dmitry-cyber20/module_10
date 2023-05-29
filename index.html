@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="myscript.js"></script>
+    <title>Практическая работа по JavaScript</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1 class="title">Практическая работа по JavaScript №5</h1>
+        <p class="subtitle">Модуль 10. API браузера.<br>Анисимов Дмитрий</p>
+        <div class="item-wrapp">
+            <div class="example_item">
+                <p class="example-title">
+                    Задача №1
+                </p>
+                <p class="example-subtitle">
+                    Сверстайте кнопку, которая будет содержать в себе <a href="https://icons.getbootstrap.com/icons/arrow-down-left-circle/" target="_blank">icon_01 </a>(как в примере в последнем видео).
+                     При клике на кнопку иконка должна меняться на <a href="https://icons.getbootstrap.com/icons/arrow-down-left-circle-fill/" target="_blank">icon_02 </a> Повторный клик меняет иконку обратно.
+                </p>
+                <div class="answer-wrapp">
+                    <p class="answer">
+                        Решение: 
+                    </p>
+                </div>
+                <div class="code-wrapp">
+                    <code>
+                        <button class="btn j-btn-test">
+                            <div class="btn_text">Moя тестовая кнопка</div>
+                            <div class="btn_icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-down-left-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-5.904-2.854a.5.5 0 1 1 .707.708L6.707 9.95h2.768a.5.5 0 1 1 0 1H5.5a.5.5 0 0 1-.5-.5V6.475a.5.5 0 1 1 1 0v2.768l4.096-4.097z"></path>
+                          </svg>
+                          </div>
+                          </button>
+                          <style>
+                            .btn {
+                              padding: 0;
+                              background-color: transparent;
+                              border: none;
+                              outline: none;
+                              box-shadow: none;
+                              cursor: pointer;
+                              display: flex;
+                              margin: 5px 10px;
+                              padding: 20px 25px;
+                              border-radius: 5px;
+                              font-size: 16px;
+                              color: white;
+                              background: #e90707;
+                              transition: 0.3s;
+                            }
+                            
+                            .btn:hover {
+                              box-shadow: 0px 2px 8px 2px rgba(86, 89, 97, 0.3);
+                              transform: scale(1.1);
+                            }
+                            
+                            .btn_text {
+                              margin-right: 10px;
+                            }
+                            
+                            .btn_icon {
+                              width: 16px;
+                              height: 16px;
+                              font-size: 16px;
+                            }
+
+                            </style>
+                            <script>
+                                const btn = document.querySelector(".j-btn-test");
+                                const btn_icon = document.querySelector(".btn_icon");
+                                let icon = 0;
+                                
+                                const icon01 = `
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-down-left-circle" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-5.904-2.854a.5.5 0 1 1 .707.708L6.707 9.95h2.768a.5.5 0 1 1 0 1H5.5a.5.5 0 0 1-.5-.5V6.475a.5.5 0 1 1 1 0v2.768l4.096-4.097z"></path>
+                                </svg>`;
+                                
+                                const icon02 = `
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-down-left-circle-fill" viewBox="0 0 16 16">
+                                  <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-5.904-2.803a.5.5 0 1 1 .707.707L6.707 10h2.768a.5.5 0 0 1 0 1H5.5a.5.5 0 0 1-.5-.5V6.525a.5.5 0 0 1 1 0v2.768l4.096-4.096z"></path>
+                                </svg>`;
+                                
+                                btn_icon.innerHTML = icon01;
+                                
+                                btn.addEventListener("click", () => {
+                                    if (icon) {
+                                        btn_icon.innerHTML = icon01;
+                                    } else {
+                                        btn_icon.innerHTML = icon02;
+                                    }
+                                    icon = !icon;
+                                });
+                            </script>
+                    </code>
+                </div>
+            </div>
+            <div class="example_item">
+                <p class="example-title">
+                    Задача №2
+                </p>
+                <p class="example-subtitle">
+                    Сверстайте кнопку, клик на которую будет выводить данные о размерах экрана с помощью alert.
+                </p>
+                <div class="answer-wrapp">
+                    <p class="answer">
+                        Решение: 
+                    </p>
+                </div>
+                <div class="code-wrapp">
+                    <code>
+                        
+                            <button class="mybtn j-btn-tested">
+                                Узнай размер своего экрана
+                            </button>
+                            <p id="screensize"></p>
+                            <style>
+                                .mybtn {
+                                    padding: 0;
+                                    background-color: transparent;
+                                    border: none;
+                                    outline: none;
+                                    box-shadow: none;
+                                    cursor: pointer;
+                                    display: flex;
+                                    margin: 5px 10px;
+                                    padding: 20px 25px;
+                                    border-radius: 5px;
+                                    font-size: 16px;
+                                    color: white;
+                                    background: #e90707;
+                                    transition: 0.3s;
+                                }
+
+                                .mybtn:hover {
+                                  box-shadow: 0px 2px 8px 2px rgba(141, 150, 178, .3);
+                                  transform: scale(1.05);
+                                }
+                            </style>
+                            <script>
+                                const screensize = document.querySelector('#screensize');
+                                const mybtn = document.querySelector('.j-btn-tested');
+                                mybtn.addEventListener('click', () => {
+                                screensize.textContent = `Размер экрана: ${window.screen.width}x${window.screen.height}`;});
+                            </script>
+                    </code>
+                </div>
+            </div>
+            <div class="example_item">
+                <p class="example-title">
+                    Задача №3
+                </p>
+                <p class="example-subtitle">
+                    1. Реализовать чат на основе эхо-сервера wss://echo-ws-service.herokuapp.com.
+                    Интерфейс состоит из input, куда вводится текст сообщения, и кнопки «Отправить».
+                    При клике на кнопку «Отправить» сообщение должно появляться в окне переписки.
+                    Эхо-сервер будет отвечать вам тем же сообщением, его также необходимо выводить в чат:
+                    <br>
+                    <img src="/img/m15_practice1.png" style="height: 350px; width: auto;">
+                    <br>
+                    2. Добавить в чат механизм отправки гео-локации:
+                    <br>
+                    <img src="/img/m15_practice1.png" style="height: 350px; width: auto;">
+                <div class="answer-wrapp">
+                    <p class="answer">
+                        Решение: 
+                    </p>
+                </div>
+                <div class="code-wrapp">
+                    <code>
+                        <section class="msger">
+                            <main class="msger-chat">
+                            </main>
+                        
+                            <form class="msger-inputarea">
+                                <input type="text" class="msger-input" placeholder="Введите сообщение...">
+                                <button type="submit" class="msger-send-btn">Отправить</button>
+                                <button type="button" class="msger-geo-btn">Гео-локация</button>
+                            </form>
+                        </section>
+                        <style>
+                        .msger {
+                            display: flex;
+                            flex-flow: column wrap;
+                            justify-content: space-between;
+                            width: 100%;
+                            max-width:700px;
+                            margin: 20px 10px;
+                            height: calc(100% - 70px);
+                            border: var(--border);
+                            border-radius: 3px;
+                            background: var(--msger-bg);
+                            box-shadow: 0 15px 15px -5px rgb(7 113 8 / 20%);
+                        }
+                        .msger-chat {
+                            flex: 1;
+                            overflow-y: auto;
+                            padding: 10px;
+                        }
+
+                        .msger-chat::-webkit-scrollbar {
+                            width: 10px;
+                        }
+
+.msger-chat::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.msger-chat::-webkit-scrollbar-thumb {
+  background: #ecdede;
+}
+
+.msg {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.msg:last-of-type {
+  margin: 0;
+}
+
+.msg-bubble {
+  max-width: 400px;
+  padding: 15px;
+  border-radius: 15px;
+  background: var(--left-msg-bg);
+}
+
+.msg-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.msg-info-name {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.msg-info-time {
+  font-size: 0.85em;
+}
+
+.left-msg .msg-bubble {
+  border-bottom-left-radius: 0;
+}
+
+.right-msg {
+  flex-direction: row-reverse;
+}
+
+.right-msg .msg-bubble {
+  background: var(--right-msg-bg);
+  color: #000000;
+  border-bottom-right-radius: 0;
+}
+
+.right-msg .msg-img {
+  margin: 0 0 0 10px;
+}
+
+.msger-inputarea {
+  display: flex;
+  padding: 10px;
+  border-radius: 5px;
+  background: #3f3f3f;
+}
+
+.msger-inputarea * {
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 1em;
+}
+
+
+.msger-send-btn {
+  margin-left: 10px;
+  background: #e90707;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.msger-send-btn:hover {
+  background: rgb(224, 44, 44);
+}
+
+.msger-geo-btn {
+  margin-left: 10px;
+  background: darkgray;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.msger-input {
+  flex: 1;
+  background: #aaaaaa;
+}
+
+.msger-geo-btn:hover {
+  background: rgb(106, 90, 194);
+}
+                        </style>
+                        <script>
+                            const msgerForm = document.querySelector(".msger-inputarea");
+const msgerGeoBtn = document.querySelector(".msger-geo-btn");
+const msgerInput = document.querySelector(".msger-input");
+const msgerChat = document.querySelector(".msger-chat");
+
+const BOT_NAME = "Bot";
+const PERSON_NAME = "You";
+
+if (!navigator.geolocation) {
+    msgerGeoBtn.style.display = "none";
+}
+
+const websocket = new WebSocket("wss://echo.websocket.org/");
+
+websocket.onopen = (e) => console.log("Connected");
+websocket.onclose = (e) => console.log("Disconnected");
+websocket.onerror = (e) => {
+    console.log("Connection error");
+};
+websocket.onmessage = (e) => {
+    let msg = e.data;
+    console.log(msg);
+    if (!isLocation(msg)) appendMessage(BOT_NAME, "left", msg);
+};
+
+msgerForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+                                const msgText = msgerInput.value;
+                                if (!msgText) return;
+                            
+                                appendMessage(PERSON_NAME, "right", msgText);
+                                msgerInput.value = "";
+                                websocket.send(msgText);
+                            });
+
+                            msgerGeoBtn.addEventListener("click", (event) => {
+                                navigator.geolocation.getCurrentPosition(
+                                    (position) => {
+                                        const latitude = position.coords.latitude;
+                                        const longitude = position.coords.longitude;
+                                        let loc = `${latitude}°, ${longitude}°`;
+                                        let msg = `<a href="https://www.openstreetmap.org/#map=12/${latitude}/${longitude}" target="_blank">${loc}</a>`;
+                                        appendMessage(PERSON_NAME, "right", msg);
+                                        msgerInput.value = "";
+                                        websocket.send(loc);
+                                    },
+                                    () => {
+                                        appendMessage(PERSON_NAME, "right", "Geo-location error");
+                                        msgerInput.value = "";
+                                    }
+                                );
+                            });
+                            
+                            function appendMessage(name, side, text) {
+                            
+                                const msgHTML = `
+                                <div class="msg ${side}-msg">
+                                  <div class="msg-bubble">
+                                    <div class="msg-info">
+                                      <div class="msg-info-name">${name}</div>
+                                      <div class="msg-info-time">${formatDate(new Date())}</div>
+                                    </div>
+                                    <div class="msg-text">${text}</div>
+                                  </div>
+                                </div>
+                              `;
+                            
+                                msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+                                msgerChat.scrollTop += 500;
+                            }
+
+                            function formatDate(date) {
+                                const h = String(date.getHours()).padStart(2, "0");
+                                const m = String(date.getMinutes()).padStart(2, "0");
+                            
+                                return `${h}:${m}`;
+                            }
+                            
+                            function isLocation(str) {
+                                var count = (str.match(/°/g) || []).length;
+                                return count === 2;
+                            }
+                        </script>
+                    </code>
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
